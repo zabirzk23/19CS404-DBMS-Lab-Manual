@@ -105,123 +105,204 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+In the Student_details table, insert a student record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
+
+RollNo      Name            Gender      Subject      MARKS
+----------  ------------    ----------  ----------   ----------
+205         Olivia Green    F
+207         Liam Smith      M           Mathematics  85
+208         Sophia Johnson  F           Science
 
 ```sql
--- Paste your SQL code below for Question 1
+INSERT INTO Student_details(RollNo,Name,Gender,Subject,Marks)
+VALUES(205,'Olivia Green', 'F',NULL,NULL);
+
+INSERT INTO Student_details(RollNo,Name,Gender,Subject,Marks)
+VALUES(207,'Liam Smith','M','Mathematics',85);
+
+INSERT INTO Student_details(RollNo,Name,Gender,Subject,Marks)
+VALUES(208,'Sophia Johnson','F','Science',NULL); 
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1183" height="278" alt="image" src="https://github.com/user-attachments/assets/1642b0f2-f275-4b60-8a14-1d519af64b8f" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 2
+CREATE TABLE Orders(
+    OrderID INT,
+    OrderDate DATE NOT NULL,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1236" height="376" alt="image" src="https://github.com/user-attachments/assets/7927abf6-9367-46a2-82dc-4a24582ae9f7" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write an SQL command can to add a column named email of type TEXT to the customers table
+
+ 
+
 
 ```sql
--- Paste your SQL code below for Question 3
+ALTER TABLE customers
+ADD COLUMN email TEXT;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1234" height="376" alt="image" src="https://github.com/user-attachments/assets/98d21488-a874-4b4d-a642-a03ddc013c6b" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Insert all students from Archived_students table into the Student_details table.
+
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           RollNo      INT           0                       1
+1           Name        VARCHAR(100)  0                       0
+2           Gender      VARCHAR(10)   0                       0
+3           Subject     VARCHAR(50)   0                       0
+4           MARKS       INT           0                       0
 
 ```sql
--- Paste your SQL code below for Question 4
+INSERT INTO Student_details (RollNo, Name, Gender, Subject, MARKS)
+SELECT RollNo,Name,Gender,Subject,MARKS
+FROM Archived_students;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1233" height="379" alt="image" src="https://github.com/user-attachments/assets/8bf5c9e3-1e3f-44cb-982b-45028d46c0f0" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE jobs
+(
+    job_id INT PRIMARY KEY,
+    job_title VARCHAR(100) DEFAULT '',
+    min_salary INT DEFAULT 8000,
+    max_salary INT DEFAULT NULL
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1234" height="420" alt="image" src="https://github.com/user-attachments/assets/0a9a0294-dce4-47f7-bce0-a77f6c569151" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
-
+Insert a product with ProductID 104, Name Tablet, and Category Electronics into the Products table, where Price and Stock should use default values.
 ```sql
--- Paste your SQL code below for Question 6
+INSERT INTO Products (ProductID, Name, Category)
+VALUES(104,'Tablet','Electronics');
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1234" height="326" alt="image" src="https://github.com/user-attachments/assets/16a83f85-e95c-4f3e-9a91-a4dd8f5e4c58" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Attendance
+(
+    AttendanceID INT PRIMARY KEY,
+    EmployeeID INT,
+    AttendanceDate DATE,
+    Status TEXT CHECK (Status IN ('Present', 'Absent', 'Leave')),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1233" height="371" alt="image" src="https://github.com/user-attachments/assets/0b48887f-6edb-4cdf-a813-261f2940ade4" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named Employees with the following columns:
 
+EmployeeID as INTEGER
+FirstName as TEXT
+LastName as TEXT
+HireDate as DATE
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Employees
+(
+    EmployeeID INTEGER,
+    FirstName TEXT,
+    LastName TEXT,
+    HireDate DATE
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1233" height="399" alt="image" src="https://github.com/user-attachments/assets/2833ba63-9141-4e09-a33f-b9bf8b7d920d" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
-
+Write a SQL Query  to add attribute ISBN as varchar(30) and domain_dept as varchar(30) in the table 'books'
 ```sql
--- Paste your SQL code below for Question 9
+
+ALTER TABLE books ADD ISBN varchar(30);
+ALTER TABLE books ADD domain_dept varchar(30);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1232" height="470" alt="image" src="https://github.com/user-attachments/assets/1604c124-3353-4d9e-83dd-8a2735cb4310" />
 
 **Question 10**
 ---
--- Paste Question 10 here
-
+Create a table named Invoices with the following constraints:
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+Amount as REAL should be greater than 0.
+DueDate as DATE should be greater than the InvoiceDate.
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Invoices
+(
+    InvoiceID INTEGER PRIMARY KEY,
+    InvoiceDate DATE,
+    Amount REAL CHECK(Amount>0),
+    DueDate DATE CHECK(DueDate > InvoiceDate),
+    OrderID INTEGER,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1231" height="371" alt="image" src="https://github.com/user-attachments/assets/152eb888-d6a6-4c41-b402-a38a34a858c3" />
 
 
 ## RESULT
