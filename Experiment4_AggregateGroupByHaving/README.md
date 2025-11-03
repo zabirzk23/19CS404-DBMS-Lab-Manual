@@ -38,123 +38,211 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+How many appointments are scheduled for each doctor?
+
+Sample table:Appointments Table
+
+<img width="970" height="159" alt="image" src="https://github.com/user-attachments/assets/36488904-5683-4482-9a9e-600069508760" />
+
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT
+    DoctorID,
+    COUNT(AppointmentID) AS TotalAppointments
+FROM Appointments
+GROUP BY DoctorID;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1235" height="715" alt="image" src="https://github.com/user-attachments/assets/656f98ab-716a-4a51-bd12-ae3d78b9c5e2" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+How many prescriptions were written in each frequency category (e.g., once daily, twice daily)?
+
+Sample tablePrescriptions Table
+
+<img width="943" height="131" alt="image" src="https://github.com/user-attachments/assets/f2f9cd7a-6818-49bb-900f-5c3a9c51b196" />
+
+
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT 
+    Frequency,
+    COUNT(PrescriptionID) AS TotalPrescriptions
+FROM Prescriptions
+GROUP BY Frequency;
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1227" height="618" alt="image" src="https://github.com/user-attachments/assets/ac24b17d-438a-43b6-94f7-044fdc3f5a5f" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+How many medical records are there for each patient?
+
+Sample table:MedicalRecords Table
+
+<img width="955" height="140" alt="image" src="https://github.com/user-attachments/assets/cb91ed78-2a12-4922-b0b0-b7c54d7af6aa" />
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT 
+    PatientID,
+    COUNT(RecordID) AS TotalRecords
+FROM
+    MedicalRecords
+GROUP BY
+    PatientID;
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1230" height="735" alt="image" src="https://github.com/user-attachments/assets/916ff66d-a93e-4c3e-97af-dc1f984e8ac3" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to find the number of employees who are having the same age removing the duplicate values.
+
+Sample table: employee
+
+<img width="316" height="189" alt="image" src="https://github.com/user-attachments/assets/33968420-cb29-4a37-8ec3-dbb05a9ff4b8" />
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT
+    COUNT(DISTINCT age) AS COUNT
+FROM employee;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1226" height="403" alt="image" src="https://github.com/user-attachments/assets/bbe450c7-9040-41df-8778-732fea9ccc93" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to find  how many employees work in California?
+
+Table: employee
+
+<img width="224" height="216" alt="image" src="https://github.com/user-attachments/assets/e1c3b52c-7792-4913-af76-5705285f45b8" />
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT 
+    COUNT(id) AS employees_in_california 
+FROM employee
+WHERE city='California';
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1228" height="390" alt="image" src="https://github.com/user-attachments/assets/134e4a4b-e85e-4213-a079-223259d5da7d" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to find the maximum purchase amount.
+
+Sample table: orders
+
+<img width="517" height="194" alt="image" src="https://github.com/user-attachments/assets/4fa2ed0d-5afc-4b2c-95ad-b99118c93672" />
+
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT 
+    MAX(purch_amt) AS MAXIMUM
+FROM orders;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1233" height="387" alt="image" src="https://github.com/user-attachments/assets/4871cb07-992d-4957-94e3-f30a6208e81a" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to find the total income of employees aged 40 or above.
+
+Table: employee
+
+<img width="213" height="189" alt="image" src="https://github.com/user-attachments/assets/be019a83-76e6-4e8b-8a75-c206ad4fd887" />
+
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT 
+    SUM(income) AS total_income
+FROM employee
+WHERE age>=40;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1228" height="396" alt="image" src="https://github.com/user-attachments/assets/5b263490-6b1f-449a-90c2-d1e0fac4a332" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that achieves the grouping of data by occupation, calculates the minimum work hours for each occupation, and excludes occupations where the minimum work hour is not greater than 8.
+
+Sample table: employee1
+
+<img width="771" height="150" alt="image" src="https://github.com/user-attachments/assets/97093ed1-45fb-4e27-9883-e5d41f092441" />
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT 
+    occupation,
+    MIN(workhour)
+FROM employee1
+GROUP BY occupation;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1229" height="559" alt="image" src="https://github.com/user-attachments/assets/b2506deb-9590-4ebe-b92a-afec64f03f5c" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the total work hours for each date, and excludes dates where the total work hour sum is not greater than 40.
+
+Sample table: employee1
+
+<img width="773" height="148" alt="image" src="https://github.com/user-attachments/assets/fff40c06-5bb8-4e09-af0a-856a35dbdf32" />
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT 
+    jdate,
+    SUM(workhour)
+FROM employee1
+GROUP BY jdate
+HAVING SUM(workhour) >=40; 
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1223" height="463" alt="image" src="https://github.com/user-attachments/assets/a76d1b62-d737-4133-98df-0a2ff3bad67e" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10.
+
+Sample table: employee1
+
+<img width="774" height="149" alt="image" src="https://github.com/user-attachments/assets/36742fd0-15df-4177-aac7-470dd0d90801" />
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT 
+    jdate,
+    AVG(workhour)
+FROM employee1
+GROUP BY jdate
+HAVING AVG(workhour) <10;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1238" height="414" alt="image" src="https://github.com/user-attachments/assets/dfb0ae48-5fed-44af-b663-c2c447415dde" />
 
 
 ## RESULT
