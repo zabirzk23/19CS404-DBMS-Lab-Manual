@@ -60,8 +60,29 @@ Key Differences:
 - Use `DBMS_OUTPUT.PUT_LINE` to display the result.
 - Call the procedure with a number as input.
 
-**Expected Output:**  
+### PL/SQL Query:
+
+```
+CREATE OR REPLACE PROCEDURE find_square(n IN NUMBER) IS
+    sq NUMBER;
+BEGIN
+    sq := n * n;
+    DBMS_OUTPUT.PUT_LINE('Square of ' || n || ' is ' || sq);
+END;
+/
+
+BEGIN
+    find_square(6);
+END;
+/
+```
+
+### Expected Output: 
 Square of 6 is 36
+<br>
+<br>
+<img width="712" height="199" alt="image" src="https://github.com/user-attachments/assets/1ef08710-116b-4aea-8edd-76ebabef2378" />
+
 
 ---
 
@@ -74,8 +95,34 @@ Square of 6 is 36
 - Return the result using the `RETURN` statement.
 - Call the function using a `SELECT` statement or in an anonymous block.
 
-**Expected Output:**  
+### PL/SQL Query:
+
+```
+CREATE OR REPLACE FUNCTION get_factorial(n IN NUMBER) RETURN NUMBER IS
+    f NUMBER := 1;
+BEGIN
+    FOR i IN 1..n LOOP
+        f := f * i;
+    END LOOP;
+    RETURN f;
+END;
+/
+
+DECLARE
+    res NUMBER;
+BEGIN
+    res := get_factorial(5);
+    DBMS_OUTPUT.PUT_LINE('Factorial of 5 is ' || res);
+END;
+/
+```
+
+### Expected Output:
 Factorial of 5 is 120
+<br>
+<br>
+<img width="709" height="185" alt="image" src="https://github.com/user-attachments/assets/63b40c2d-b32d-4305-bf23-091dfb687cec" />
+
 
 ---
 
@@ -87,8 +134,30 @@ Factorial of 5 is 120
 - Use the `MOD` function to check if the number is divisible by 2.
 - Display whether it is Even or Odd using `DBMS_OUTPUT.PUT_LINE`.
 
-**Expected Output:**  
+### PL/SQL Query:
+
+```
+CREATE OR REPLACE PROCEDURE check_even_odd(n IN NUMBER) IS
+BEGIN
+    IF MOD(n, 2) = 0 THEN
+        DBMS_OUTPUT.PUT_LINE(n || ' is Even');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE(n || ' is Odd');
+    END IF;
+END;
+/
+
+BEGIN
+    check_even_odd(12);
+END;
+/
+```
+### Expected Output:  
 12 is Even
+<br>
+<br>
+<img width="686" height="207" alt="image" src="https://github.com/user-attachments/assets/2c011f1b-e0f8-42e7-a273-50088447310f" />
+
 
 ---
 
@@ -101,8 +170,35 @@ Factorial of 5 is 120
 - Return the reversed number.
 - Call the function and display the output.
 
-**Expected Output:**  
+### PL/SQL Query:
+
+```
+CREATE OR REPLACE FUNCTION reverse_number(n IN NUMBER) RETURN NUMBER IS
+    rev NUMBER := 0;
+    temp NUMBER := n;
+BEGIN
+    WHILE temp > 0 LOOP
+        rev := rev * 10 + MOD(temp, 10);
+        temp := FLOOR(temp / 10);
+    END LOOP;
+    RETURN rev;
+END;
+/
+
+DECLARE
+    r NUMBER;
+BEGIN
+    r := reverse_number(1234);
+    DBMS_OUTPUT.PUT_LINE('Reversed number of 1234 is ' || r);
+END;
+/
+```
+
+### Expected Output:
 Reversed number of 1234 is 4321
+<br>
+<br>
+<img width="687" height="190" alt="image" src="https://github.com/user-attachments/assets/71e67e1d-25ea-437c-9740-e40651a025ea" />
 
 ---
 
@@ -114,13 +210,36 @@ Reversed number of 1234 is 4321
 - Use a loop from 1 to 10 to multiply the input number.
 - Display the multiplication results using `DBMS_OUTPUT.PUT_LINE`.
 
-**Expected Output:**  
+### PL/SQL Query:
+
+```
+CREATE OR REPLACE PROCEDURE print_table(n IN NUMBER) IS
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Multiplication table of ' || n || ':');
+    FOR i IN 1..10 LOOP
+        DBMS_OUTPUT.PUT_LINE(n || ' x ' || i || ' = ' || (n * i));
+    END LOOP;
+END;
+/
+
+BEGIN
+    print_table(5);
+END;
+/
+```
+
+### Expected Output:
 Multiplication table of 5:  
 5 x 1 = 5  
 5 x 2 = 10  
 5 x 3 = 15  
 ...  
 5 x 10 = 50
+
+<br>
+<br>
+<img width="770" height="388" alt="image" src="https://github.com/user-attachments/assets/a8240364-22f7-4cf3-9ad4-fe4cc83b1788" />
+
 
 ## RESULT
 Thus, the PL/SQL programs using procedures and functions were written, compiled, and executed successfully.
